@@ -9,7 +9,7 @@ document.body.style.borderWidth = "5px"
 //adj canvas for fullscreen
 const canvas = document.createElement('canvas')
 canvas.width = window.innerWidth - 10
-canvas.height = window.innerHeight - 10
+canvas.height = window.innerHeight - 15
 document.body.appendChild(canvas)
 
 //attach game after load
