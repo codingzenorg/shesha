@@ -1,16 +1,16 @@
 {
   "name": "codingzen.shesha",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "similar to nibbles",
   "main": "index.js",
   "scripts": {
-    "start": "parcel index.html --open",
-    "build": "parcel build index.html --public-url . --experimental-scope-hoisting"
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
   },
   "keywords": [],
-  "author": "Henrique Riccio <henrique.riccio@gmail.com>",
+  "author": "Henrique Riccio <henrique@codingzen.org>",
   "license": "MIT License",
   "dependencies": {
-    "parcel-bundler": "^1.12.4"
+    "parcel": "^2.1.1"
   }
 }

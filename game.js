@@ -26,10 +26,6 @@ const appleCreator = ({ h, v }) => {
     }
 }
 
-
-
-
-
 //knows how to create a new game
 export const gameCreator = (board, sceneRenderer) => {
     let hCorrection = correctHorizAxis(board)
@@ -61,6 +57,7 @@ const correctVerticalAxis = ({ v }) => (y) => {
     if (y < 0) return v - 1
     if (y > v - 1) return 0
     return y
+
 }
 //todo: reuse correctHorizAxis instead correctHorizAxis and correctVerticalAxis, and give it a meaningful name
 
