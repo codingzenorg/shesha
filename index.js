@@ -1,4 +1,5 @@
 import {keyDown, boardCreator, gameCreator} from './game'
+import {input} from './engine'
 
 //configure body
 document.body.style.margin = "0px"
