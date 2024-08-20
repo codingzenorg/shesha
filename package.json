@@ -2,15 +2,15 @@
   "name": "codingzen.shesha",
   "version": "1.0.1",
   "description": "similar to nibbles",
-  "main": "index.js",
+  "source": "src/index.html",
   "scripts": {
-    "start": "parcel index.html",
-    "build": "parcel build index.html"
+    "start": "parcel",
+    "build": "parcel build"
   },
   "keywords": [],
-  "author": "Henrique Riccio <henrique@codingzen.org>",
+  "author": "hriccio <hriccio@codingzen.org>",
   "license": "MIT License",
   "dependencies": {
-    "parcel": "^2.1.1"
+    "parcel": "^2.12.0"
   }
 }
