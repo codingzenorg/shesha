@@ -5,7 +5,6 @@ here keep logic thats:
 - translate screen i/o into moves/feedback
 */
 
-
 //gets relation between screensize and cellsize
 const canvasMapBuilder = (cellSize) => {
     cellSize = cellSize || 20
@@ -39,40 +38,16 @@ const createCanvas = (document) => {
 }
 
 //input - logic to translate keyboard input into game actions
-const bindInput = (document, game) => {
+const bindInput = (document, dispatcher, actions) => {
     document.addEventListener("keydown", key => {
-        game.actions({
-            'ArrowLeft': game.moves.leftArrow,
-            'ArrowUp': game.moves.upArrow,
-            'ArrowRight': game.moves.rightArrow,
-            'ArrowDown': game.moves.downArrow
+        dispatcher({
+            'ArrowLeft': actions.leftArrow,
+            'ArrowUp': actions.upArrow,
+            'ArrowRight': actions.rightArrow,
+            'ArrowDown': actions.downArrow
         }[key.key])
     })
 }
-
-export default binder = (document, game) => {
-
-    bindInput(document, game)
-
-    const canvas = createCanvas(document)
-
-    const canvasMap = canvasMapBuilder()
-
-    const gameLoop = game.gameCreator(sceneRendererBuilder(canvas, canvasMap, {
-        boardBackColor: 'black',
-        snakeColor: 'blue',
-        appleColor: 'red'
-    }),
-        canvasMap.limit(canvas.width, canvas.height)
-    )
-
-    //const gameRhythm = 1000 / 15 //1s/15
-    const gameRhythm = 1000 / 1
-
-    setInterval(gameLoop, gameRhythm)
-
-}
-
 
 //presentation logic
 const sceneRendererBuilder = (canvas, { f, cellSize }, { boardBackColor, appleColor, snakeColor }) => {
@@ -106,4 +81,27 @@ const sceneRendererBuilder = (canvas, { f, cellSize }, { boardBackColor, appleCo
         ctx.fillText(`snake (${snake.x},${snake.y})`, (canvas.width) - 150, 110)
         ctx.fillText(`calls (${count})`, (canvas.width) - 150, 130)
     }
+}
+
+export const binder = (document, gameCreator) => {
+
+    const canvas = createCanvas(document)
+
+    const canvasMap = canvasMapBuilder()
+
+    const { dispatcher, actions, gameLoop } = gameCreator(sceneRendererBuilder(canvas, canvasMap, {
+        boardBackColor: 'black',
+        snakeColor: 'blue',
+        appleColor: 'red'
+    }),
+        canvasMap.limit(canvas.width, canvas.height)
+    )
+
+    bindInput(document, dispatcher, actions)
+
+    //const gameRhythm = 1000 / 15 //1s/15
+    const gameRhythm = 1000 / 15
+
+    setInterval(gameLoop, gameRhythm)
+
 }

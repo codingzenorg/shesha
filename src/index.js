@@ -1,4 +1,4 @@
-import binder from './binder'
-import game from './game'
+import { binder } from './binder'
+import { gameCreator } from './game'
 
-binder(document, game)
+binder(document, gameCreator)
