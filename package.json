@@ -11,6 +11,6 @@
   "author": "hriccio <hriccio@codingzen.org>",
   "license": "MIT License",
   "dependencies": {
-    "parcel": "^2.13.2"
+    "parcel": "^2.16.4"
   }
 }
